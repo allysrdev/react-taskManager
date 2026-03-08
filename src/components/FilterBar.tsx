@@ -1,10 +1,7 @@
 import { useTaskStore } from "../store/taskStore";
 
 export default function FilterBar() {
-  const {
-    state: { filter },
-    actions: { setFilter },
-  } = useTaskStore();
+  const { filter, setFilter } = useTaskStore();
 
   return (
     <div className="w-full border sm:border-0 border-zinc-300 rounded-2xl py-5 px-5 flex gap-5 items-center justify-center sm:justify-start">
