@@ -3,6 +3,7 @@ import { useTaskStore } from "../../store/taskStore";
 import type { Task } from "../../../../@types/task";
 import { useState } from "react";
 import ConfirmDialog from "../../../../components/ui/ConfirmDialog";
+import { useTheme } from "../../../theme/hooks/useTheme";
 
 interface TaskCardProps {
   task: Task;
@@ -11,6 +12,7 @@ interface TaskCardProps {
 export default function TaskCard({ task }: TaskCardProps) {
   const { deleteTask, updateTask, setEditingTask } = useTaskStore();
   const [taskToDelete, setTaskToDelete] = useState<string | null>(null);
+  const darkMode = useTheme().darkMode;
 
   const handleUpdateTaskStatus = () => {
     updateTask({
@@ -35,7 +37,9 @@ export default function TaskCard({ task }: TaskCardProps) {
   }
 
   return (
-    <div className="w-full border border-zinc-300 rounded-sm bg-white p-5 flex items-center justify-between">
+    <div
+      className={`w-full border border-zinc-300 rounded-sm bg-white p-5 flex items-center justify-between ${darkMode ? "dark:bg-zinc-800" : ""}`}
+    >
       <div className="flex items-center">
         <input
           type="checkbox"

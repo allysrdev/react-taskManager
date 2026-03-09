@@ -12,3 +12,17 @@ h5,
 h6 {
   color: #465268;
 }
+
+html.dark h1,
+html.dark h2,
+html.dark h3,
+html.dark h4,
+html.dark h5,
+html.dark h6,
+html.dark p {
+  color: #d4d4d8; /* cor clara no dark mode */
+}
+
+html.dark body {
+  background-color: #1e1e1e; /* cor de fundo escura no dark mode */
+}

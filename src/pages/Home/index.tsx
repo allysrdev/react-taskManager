@@ -3,12 +3,16 @@ import TasksFilter from "../../features/tasks/components/TasksFilter";
 import TasksView from "../../features/tasks/components/TasksView";
 import { useTaskStore } from "../../features/tasks/store/taskStore";
 import TaskForm from "../../features/tasks/components/TaskForm/index";
+import { useTheme } from "../../features/theme/hooks/useTheme";
 
 export default function Home() {
   const { editingTask } = useTaskStore();
+  const darkMode = useTheme().darkMode;
 
   return (
-    <div className="h-screen bg-zinc-100 flex flex-col">
+    <div
+      className={`h-screen bg-zinc-100 flex flex-col ${darkMode ? "dark:bg-zinc-900" : ""}`}
+    >
       <Header />
 
       <main className="flex-1 min-h-0 sm:px-20 p-5 flex sm:flex-row flex-col gap-5">

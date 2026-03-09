@@ -3,6 +3,7 @@ import { useTaskStore } from "../../store/taskStore";
 import type { NewTask, Task } from "../../../../@types/task";
 import Button from "../../../../components/ui/Button";
 import Input from "../../../../components/ui/Input";
+import { useTheme } from "../../../theme/hooks/useTheme";
 
 interface TaskFormProps {
   editingTask?: Task | null;
@@ -14,6 +15,7 @@ export default function TaskForm({ editingTask }: TaskFormProps) {
     editingTask ?? { description: "", completed: false },
   );
   const inputRef = useRef<HTMLInputElement>(null);
+  const darkMode = useTheme().darkMode;
 
   function handleAddTask() {
     if (!newTask.description.trim()) return;
@@ -30,7 +32,7 @@ export default function TaskForm({ editingTask }: TaskFormProps) {
 
   return (
     <form
-      className="sm:mt-5 w-full border border-zinc-300 rounded-sm bg-white"
+      className={`sm:mt-5 w-full border border-zinc-300 rounded-sm bg-white ${darkMode ? "dark:bg-zinc-800" : ""}`}
       onSubmit={(e) => {
         e.preventDefault();
         if (editingTask) {
