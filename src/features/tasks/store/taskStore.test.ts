@@ -32,9 +32,9 @@ describe("taskStore", () => {
 
   it("Deve atualizar uma tarefa", () => {
     const { addTask, updateTask } = useTaskStore.getState();
-    const newTask = { id: null, description: "Test Task", completed: false };
+    const newTask = { id: "0", description: "Test Task", completed: false };
     addTask(newTask);
-    const taskId = useTaskStore.getState().tasks[0].id;
+    const taskId = useTaskStore.getState().tasks[0].id!;
     const updatedTask = {
       id: taskId,
       description: "Updated Task",

@@ -1,17 +1,21 @@
 export interface Task {
-  id: string | null;
+  id: string;
   description: string;
   completed: boolean;
 }
 
+export type NewTask = Omit<Task, "id">;
+
 export interface TaskState {
   tasks: Task[];
-  filter: "all" | "completed" | "pending";
+  filter: FilterType;
   editingTask: Task | null;
-  addTask: (task: Task) => void;
+  addTask: (task: NewTask) => void;
   deleteTask: (id: string) => void;
   updateTask: (updatedTask: Task) => void;
-  setFilter: (filter: "all" | "completed" | "pending") => void;
+  setFilter: (filter: FilterType) => void;
   setEditingTask: (task: Task | null) => void;
   clearEditingTask: () => void;
 }
+
+export type FilterType = "all" | "completed" | "pending";

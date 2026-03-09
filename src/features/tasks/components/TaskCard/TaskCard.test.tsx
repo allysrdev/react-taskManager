@@ -1,12 +1,12 @@
 import { render, screen, fireEvent } from "@testing-library/react";
 import { describe, it, expect, vi, beforeEach } from "vitest";
-import TaskCard from "./TaskCard";
+import TaskCard from ".";
 
 const mockDeleteTask = vi.fn();
 const mockUpdateTask = vi.fn();
 const mockSetEditingTask = vi.fn();
 
-vi.mock("../store/taskStore.tsx", () => ({
+vi.mock("../../store/taskStore.ts", () => ({
   useTaskStore: () => ({
     deleteTask: mockDeleteTask,
     updateTask: mockUpdateTask,
@@ -21,13 +21,13 @@ describe("TaskCard Component", () => {
     completed: false,
   };
 
+  beforeEach(() => {
+    vi.clearAllMocks();
+  });
+
   it("Deve renderizar a descrição da tarefa corretamente", () => {
     render(<TaskCard task={mockTask} />);
     expect(screen.getByText("Test Task")).toBeInTheDocument();
-  });
-
-  beforeEach(() => {
-    vi.clearAllMocks();
   });
 
   it("Deve chamar deleteTask com o ID correto ao confirmar a exclusão", () => {

@@ -1,8 +1,8 @@
-import Header from "../components/Header";
-import TaskForm from "../components/TaskForm";
-import FilterBar from "../components/FilterBar";
-import TasksView from "../components/TasksView";
-import { useTaskStore } from "../store/taskStore";
+import Header from "../../components/layout/Header";
+import TasksFilter from "../../features/tasks/components/TasksFilter";
+import TasksView from "../../features/tasks/components/TasksView";
+import { useTaskStore } from "../../features/tasks/store/taskStore";
+import TaskForm from "../../features/tasks/components/TaskForm/index";
 
 export default function Home() {
   const { editingTask } = useTaskStore();
@@ -11,7 +11,7 @@ export default function Home() {
     <div className="h-screen bg-zinc-100 flex flex-col">
       <Header />
 
-      <main className="flex-1 min-h-0 sm:px-20 p-5 flex sm:flex-row flex-col gap-10">
+      <main className="flex-1 min-h-0 sm:px-20 p-5 flex sm:flex-row flex-col gap-5">
         <div className="w-full">
           <TaskForm
             key={editingTask ? editingTask.id : "new"}
@@ -19,8 +19,10 @@ export default function Home() {
           />
         </div>
 
+        <div className="w-full bg-zinc-300 h-[0.5px] sm:hidden" />
+
         <div className="w-full flex flex-col gap-3 min-h-0">
-          <FilterBar />
+          <TasksFilter />
 
           <div className="flex items-center gap-2">
             <div className="w-5 bg-zinc-300 h-[0.5px]" />

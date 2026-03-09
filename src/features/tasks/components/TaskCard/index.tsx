@@ -1,9 +1,14 @@
 import { PencilIcon, TrashIcon } from "@phosphor-icons/react";
-import { useTaskStore } from "../store/taskStore";
-import type { Task } from "../types/task";
+import { useTaskStore } from "../../store/taskStore";
+import type { Task } from "../../../../@types/task";
 import { useState } from "react";
+import ConfirmDialog from "../../../../components/ui/ConfirmDialog";
 
-export default function TaskCard({ task }: { task: Task }) {
+interface TaskCardProps {
+  task: Task;
+}
+
+export default function TaskCard({ task }: TaskCardProps) {
   const { deleteTask, updateTask, setEditingTask } = useTaskStore();
   const [taskToDelete, setTaskToDelete] = useState<string | null>(null);
 
@@ -67,31 +72,12 @@ export default function TaskCard({ task }: { task: Task }) {
         </div>
       </div>
       {taskToDelete && (
-        <div className="fixed inset-0 flex items-center justify-center bg-black/50">
-          <div className="bg-white p-6 rounded-xl shadow-lg w-80">
-            <h2 className="text-lg font-semibold mb-4">Confirmar exclusão</h2>
-
-            <p className="text-sm text-gray-600 mb-6">
-              Tem certeza que deseja excluir esta tarefa?
-            </p>
-
-            <div className="flex justify-end gap-3">
-              <button
-                onClick={cancelDelete}
-                className="px-4 py-2 rounded-lg border cursor-pointer"
-              >
-                Cancelar
-              </button>
-
-              <button
-                onClick={confirmDelete}
-                className="px-4 py-2 rounded-lg bg-red-500 text-white cursor-pointer"
-              >
-                Excluir
-              </button>
-            </div>
-          </div>
-        </div>
+        <ConfirmDialog
+          title="Excluir tarefa"
+          description={`Tem certeza que deseja excluir a tarefa "${task.description}"?`}
+          confirmDelete={confirmDelete}
+          cancelDelete={cancelDelete}
+        />
       )}
     </div>
   );
