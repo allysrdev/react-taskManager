@@ -17,7 +17,7 @@ export default function Header() {
         </h1>
       </div>
       <button
-        className={`flex items-center justify-center w-9   ${getBgColor(darkMode, "bg-[#545f73]", "bg-[#d4d4d8]")} hover:opacity-80 rounded-full`}
+        className={`flex items-center justify-center w-9 cursor-pointer   ${getBgColor(darkMode, "bg-[#545f73]", "bg-[#d4d4d8]")} hover:opacity-80 rounded-full`}
         onClick={toggleDarkMode}
       >
         {darkMode ? (
