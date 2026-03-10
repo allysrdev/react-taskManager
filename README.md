@@ -116,4 +116,4 @@ Contribuições são valorizadas! Sinta-se à vontade para abrir _issues_ para s
 **Allyson Santana**
 
 [GitHub](https://github.com/allysrdev)
-[LinkedIn](https://www.linkedin.com/in/allysonsantana/)
+[LinkedIn](https://www.linkedin.com/in/allysantanadev/)
